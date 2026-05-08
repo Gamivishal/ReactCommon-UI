@@ -26,15 +26,12 @@ import Users from "../pages/User"
 import Roles from "../pages/Role"
 import Menus from "../pages/Menu"
 import Lov from "../pages/Lov"
-import Property from "../pages/Property"
 
 
 //Extra Pages
 import PagesBlank from "../pages/Extra Pages/pages-blank";
 import Pages404 from "../pages/Extra Pages/pages-404";
 import Pages500 from "../pages/Extra Pages/pages-500";
-
-import UserDemo from "../pages/UserDemo";
 
 const userRoutes = [
   { path: "/dashboard", component: <Dashboard /> },
@@ -68,14 +65,6 @@ const userRoutes = [
   { path: "/lov/details/:lovColumn/manage/:lovCode", component: <Lov /> },
   { path: "/lovs/details/:lovColumn/manage/:lovCode", component: <Lov /> },
   { path: "/pages-blank", component: <PagesBlank /> },
-  { path: "/userdemo", component: <UserDemo /> },
-  { path: "/userdemo/manage", component: <UserDemo /> },
-  { path: "/userdemo/manage/:id", component: <UserDemo /> },
-  { path: "/userdemos", component: <UserDemo /> },
-  { path: "/property", component: <Property /> },
-  { path: "/property/manage", component: <Property /> },
-  { path: "/property/manage/:id", component: <Property /> },
-  { path: "/propertys", component: <Property /> },
 
   // this route should be at the end of all other routes
   {
