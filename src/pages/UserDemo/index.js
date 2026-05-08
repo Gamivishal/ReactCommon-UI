@@ -4,11 +4,12 @@ import { MDBDataTable } from "mdbreact";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { getUserDemoList, getUserDemoById, saveUserDemo } from "../../helpers/fakebackend_helper";
 import UserDemoForm from "./UserDemoForm";
+import { SITE_TITLE } from "../../common/common";
 
 const USER_DEMO_LIST_SORT_DIR = "asc";
 
 const UserDemo = () => {
-  document.title = "UserDemo | Lexa - Responsive Bootstrap 5 Admin Dashboard";
+  document.title = `UserDemo | ${SITE_TITLE}`;
   const navigate = useNavigate();
   const location = useLocation();
   const params = useParams();
@@ -165,6 +166,7 @@ const UserDemo = () => {
           <div className="text-center my-4"><Spinner /></div>
         ) : (
           <MDBDataTable
+            responsive
             striped
             bordered
             small

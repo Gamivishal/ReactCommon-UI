@@ -3,7 +3,7 @@ import { Alert, Button, Card, CardBody, Col, Row, Spinner } from "reactstrap"
 import { MDBDataTable } from "mdbreact"
 import { connect } from "react-redux"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
-import { buildServerSortColumns, getNextSortState, withAutoSrColumn } from "../../common/common"
+import { buildServerSortColumns, getNextSortState, withAutoSrColumn, SITE_TITLE } from "../../common/common"
 
 import { setBreadcrumbItems } from "../../store/actions"
 import {
@@ -30,7 +30,7 @@ const toBoolean = value => {
 }
 
 const Roles = props => {
-  document.title = "Roles | Lexa - Responsive Bootstrap 5 Admin Dashboard"
+  document.title = `Roles | ${SITE_TITLE}`
   const navigate = useNavigate()
   const location = useLocation()
   const params = useParams()
@@ -55,12 +55,7 @@ const Roles = props => {
     isAdmin: false,
     selectedMenu: "",
   })
-
-  const breadcrumbItems = [
-    { title: "Lexa", link: "#" },
-    { title: "Roles", link: "#" },
-  ]
-
+  
   const loadRoles = async () => {
     setLoading(true)
     setError("")
@@ -87,7 +82,7 @@ const Roles = props => {
   }
 
   useEffect(() => {
-    props.setBreadcrumbItems("Roles", breadcrumbItems)
+    props.setBreadcrumbItems("Roles")
   }, [])
 
   useEffect(() => {
@@ -344,7 +339,7 @@ const Roles = props => {
                     <Spinner color="primary" />
                   </div>
                 ) : (
-                  <MDBDataTable className="table-auto-sr" striped bordered small noBottomColumns data={data} />
+                  <MDBDataTable className="table-auto-sr" responsive striped bordered small noBottomColumns data={data} />
                 )}
               </CardBody>
             </Card>

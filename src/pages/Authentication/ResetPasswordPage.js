@@ -8,9 +8,10 @@ import * as Yup from "yup";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { post } from "../../helpers/api_helper";
+import { SITE_TITLE } from "../../common/common";
 
 const ResetPasswordPage = () => {
-  document.title = "Reset Password | Lexa - Responsive Bootstrap 5 Admin Dashboard";
+  document.title = `Reset Password | ${SITE_TITLE}`;
   const navigate = useNavigate();
   // Remove local error/success state, use toast instead
   const email = localStorage.getItem("reset_email") || "";

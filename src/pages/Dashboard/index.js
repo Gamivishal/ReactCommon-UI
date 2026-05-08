@@ -1,15 +1,11 @@
 import React , {useEffect} from "react"
-
 import { connect } from "react-redux";
-
-
-
-//Import Action to copy breadcrumb items from local state to redux state
 import { setBreadcrumbItems } from "../../store/actions";
+import { SITE_TITLE } from "../../common/common";
 
 const Dashboard = (props) => {
 
-  document.title = "Dashboard | Lexa - Responsive Bootstrap 5 Admin Dashboard";
+  document.title = `Dashboard | ${SITE_TITLE}`;
 
 
   const breadcrumbItems = [

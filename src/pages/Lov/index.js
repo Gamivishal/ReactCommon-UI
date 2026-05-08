@@ -3,7 +3,7 @@ import { Alert, Button, Card, CardBody, Spinner } from "reactstrap"
 import { MDBDataTable } from "mdbreact"
 import { connect } from "react-redux"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
-import { buildServerSortColumns, getNextSortState, withAutoSrColumn } from "../../common/common"
+import { buildServerSortColumns, getNextSortState, withAutoSrColumn, SITE_TITLE } from "../../common/common"
 
 import { setBreadcrumbItems } from "../../store/actions"
 import {
@@ -52,10 +52,6 @@ const normalizeList = payload => {
   return []
 }
 
-const LOV_BREADCRUMB_ITEMS = [
-  { title: "Lexa", link: "#" },
-  { title: "LOV", link: "#" },
-]
 
 const LOV_MASTER_SORT_COLUMN = "lov_Column"
 const LOV_MASTER_SORT_DIR = "asc"
@@ -63,7 +59,7 @@ const LOV_DETAIL_SORT_COLUMN = "displayOrder"
 const LOV_DETAIL_SORT_DIR = "asc"
 
 const Lov = props => {
-  document.title = "LOV | Lexa - Responsive Bootstrap 5 Admin Dashboard"
+  document.title = `LOV | ${SITE_TITLE}`
   const { setBreadcrumbItems } = props
 
   const navigate = useNavigate()
@@ -213,7 +209,7 @@ const Lov = props => {
   }
 
   useEffect(() => {
-    setBreadcrumbItems("LOV", LOV_BREADCRUMB_ITEMS)
+    setBreadcrumbItems("LOV")
   }, [setBreadcrumbItems])
 
   useEffect(() => {
@@ -519,7 +515,7 @@ const Lov = props => {
             <Spinner color="primary" />
           </div>
         ) : (
-          <MDBDataTable className="table-auto-sr" striped bordered small noBottomColumns data={masterTableData} />
+          <MDBDataTable className="table-auto-sr" responsive striped bordered small noBottomColumns data={masterTableData} />
         )}
       </CardBody>
     </Card>

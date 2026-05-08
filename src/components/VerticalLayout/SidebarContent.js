@@ -7,12 +7,13 @@ import SimpleBar from "simplebar-react"
 // MetisMenu
 import MetisMenu from "metismenujs"
 import withRouter from "components/Common/withRouter"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 //i18n
 import { withTranslation } from "react-i18next"
 
 const SidebarContent = props => {
+  const location = useLocation()
   const ref = useRef();
   const activateParentDropdown = useCallback((item) => {
     item.classList.add("active");
@@ -125,6 +126,10 @@ const SidebarContent = props => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     activeMenu();
+    if (window.innerWidth < 992) {
+      document.body.classList.remove("sidebar-enable");
+      document.body.classList.remove("vertical-collapsed");
+    }
   }, [activeMenu]);
 
   function scrollElement(item) {

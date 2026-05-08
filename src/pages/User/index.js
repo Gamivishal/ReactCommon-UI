@@ -3,7 +3,7 @@ import { Alert, Button, Card, CardBody, Col, Row, Spinner } from "reactstrap"
 import { MDBDataTable } from "mdbreact"
 import { connect } from "react-redux"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
-import { buildServerSortColumns, getNextSortState, withAutoSrColumn } from "../../common/common"
+import { buildServerSortColumns, getNextSortState, withAutoSrColumn, SITE_TITLE } from "../../common/common"
 
 import { setBreadcrumbItems } from "../../store/actions"
 import { deleteUserById, getRoleNames, getUserById, getUsersPages, saveUser } from "../../helpers/fakebackend_helper"
@@ -17,7 +17,7 @@ const USER_LIST_SORT_COLUMN = "userName"
 const USER_LIST_SORT_DIR = "asc"
 
 const Users = props => {
-  document.title = "Users | Lexa - Responsive Bootstrap 5 Admin Dashboard"
+  document.title = `Users | ${SITE_TITLE}`
   const navigate = useNavigate()
   const location = useLocation()
   const params = useParams()
@@ -45,10 +45,6 @@ const Users = props => {
     isDeleted: false,
   })
 
-  const breadcrumbItems = [
-    { title: "Lexa", link: "#" },
-    { title: "Users", link: "#" },
-  ]
 
   const loadUsers = async () => {
     setLoading(true)
@@ -128,7 +124,7 @@ const handleExportPdf = async () => {
 
 
   useEffect(() => {
-    props.setBreadcrumbItems("Users", breadcrumbItems)
+    props.setBreadcrumbItems("Users")
   }, [])
 
   useEffect(() => {
@@ -395,7 +391,7 @@ const handleExportPdf = async () => {
                     <Spinner color="primary" />
                   </div>
                 ) : (
-                  <MDBDataTable className="table-auto-sr" striped bordered small noBottomColumns data={data} />
+                  <MDBDataTable className="table-auto-sr" responsive striped bordered small noBottomColumns data={data} />
                 )}
               </CardBody>
             </Card>

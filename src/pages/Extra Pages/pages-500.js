@@ -1,10 +1,11 @@
 import React from 'react';
 import { Container, Row, Col, Card, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { SITE_TITLE } from "../../common/common";
 
 
 const Pages500 = () => {
-    document.title = "Error 500 | Lexa - Responsive Bootstrap 5 Admin Dashboard";
+    document.title = `Error 500 | ${SITE_TITLE}`;
     
   return (
     <React.Fragment>

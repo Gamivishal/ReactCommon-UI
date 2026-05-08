@@ -3,7 +3,7 @@ import { Alert, Button, Card, CardBody, Col, Row, Spinner } from "reactstrap"
 import { MDBDataTable } from "mdbreact"
 import { connect } from "react-redux"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
-import { buildServerSortColumns, getNextSortState, withAutoSrColumn } from "../../common/common"
+import { buildServerSortColumns, getNextSortState, withAutoSrColumn, SITE_TITLE } from "../../common/common"
 
 import { setBreadcrumbItems } from "../../store/actions"
 import { deleteMenuById, getMenuById, getMenusPages, saveMenu } from "../../helpers/fakebackend_helper"
@@ -24,7 +24,7 @@ const toBoolean = value => {
 }
 
 const Menus = props => {
-  document.title = "Menus | Lexa - Responsive Bootstrap 5 Admin Dashboard"
+  document.title = `Menus | ${SITE_TITLE}`
   const navigate = useNavigate()
   const location = useLocation()
   const params = useParams()
@@ -55,11 +55,6 @@ const Menus = props => {
     isAdmin: false,
   })
 
-  const breadcrumbItems = [
-    { title: "Lexa", link: "#" },
-    { title: "Menus", link: "#" },
-  ]
-
   const loadMenus = async () => {
     setLoading(true)
     setError("")
@@ -86,7 +81,7 @@ const Menus = props => {
   }
 
   useEffect(() => {
-    props.setBreadcrumbItems("Menus", breadcrumbItems)
+    props.setBreadcrumbItems("Menus")
   }, [])
 
   useEffect(() => {
@@ -374,7 +369,7 @@ const Menus = props => {
                     <Spinner color="primary" />
                   </div>
                 ) : (
-                  <MDBDataTable className="table-auto-sr" striped bordered small noBottomColumns data={data} />
+                  <MDBDataTable className="table-auto-sr" responsive striped bordered small noBottomColumns data={data} />
                 )}
               </CardBody>
             </Card>

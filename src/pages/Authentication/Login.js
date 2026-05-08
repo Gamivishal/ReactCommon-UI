@@ -6,6 +6,7 @@ import logoLight from "../../assets/images/logo-dark.png";
 import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from "reselect";
 import PropTypes from "prop-types";
+import { SITE_TITLE } from "../../common/common";
 
 // Formik validation
 import * as Yup from "yup";
@@ -19,7 +20,7 @@ import { showError } from "../../Pop_show/alertService";
 import { apiError, loginUser, socialLogin } from "../../store/actions";
 
 const Login = props => {
-  document.title = "Login | Lexa - Responsive Bootstrap 5 Admin Dashboard";
+  document.title = `Login | ${SITE_TITLE}`;
 
   const dispatch = useDispatch();
 
@@ -87,8 +88,8 @@ const Login = props => {
                                 </h3>
 
                                 <div className="p-3">
-                                    <h4 className="text-muted font-size-18 mb-1 text-center">Welcome Back !</h4>
-                                    <p className="text-muted text-center">Sign in to continue to Lexa.</p>
+                                    {/* <h4 className="text-muted font-size-18 mb-1 text-center">Welcome Back !</h4>
+                                    <p className="text-muted text-center">Sign in to continue to Lexa.</p> */}
                                     <Form
                                       className="form-horizontal mt-4"
                                       onSubmit={(e) => {

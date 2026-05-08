@@ -1,5 +1,7 @@
 import React from "react"
 
+export const SITE_TITLE = "Padhya Solutions"
+
 export const SR_AUTO_FIELD = "__sr_auto__"
 
 export const getNextSortState = (currentColumn, currentDirection, nextColumn) => {

@@ -6,10 +6,11 @@ import logoLight from "../../assets/images/logo-light.png";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { post } from "../../helpers/api_helper";
+import { SITE_TITLE } from "../../common/common";
 
 
 const OtpPage = () => {
-  document.title = "Enter OTP | Lexa - Responsive Bootstrap 5 Admin Dashboard";
+  document.title = `Enter OTP | ${SITE_TITLE}`;
   const navigate = useNavigate();
   const [error, setError] = React.useState("");
   const [success, setSuccess] = React.useState("");

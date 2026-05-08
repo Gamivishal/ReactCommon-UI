@@ -1,4 +1,5 @@
 import React from "react"
+import { SITE_TITLE } from "../../common/common"
 import { Row, Col, CardBody, Card, Container, Alert, Form, Input } from "reactstrap"
 
 import { Link } from "react-router-dom"
@@ -9,7 +10,7 @@ import logoDark from "../../assets/images/logo-dark.png"
 
 const Recoverpw = (props) => {
 
-  document.title = "Recover Password | Lexa - Responsive Bootstrap 5 Admin Dashboard";
+  document.title = `Recover Password | ${SITE_TITLE}`;
   return (
     <React.Fragment>
       

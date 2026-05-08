@@ -7,15 +7,13 @@ import logoLight from "../../assets/images/logo-light.png";
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from "reselect";
 import withRouter from 'components/Common/withRouter';
-// Formik Validation
 import * as Yup from "yup";
 import { useFormik } from "formik";
-
-// action
 import { userForgetPassword } from "../../store/actions";
+import { SITE_TITLE } from "../../common/common";
 
 const ForgetPasswordPage = props => {
-  document.title = "Forget Password | Lexa - Responsive Bootstrap 5 Admin Dashboard";
+  document.title = `Forget Password | ${SITE_TITLE}`;
 
   const dispatch = useDispatch();
 

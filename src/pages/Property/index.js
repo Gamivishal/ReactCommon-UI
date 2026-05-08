@@ -4,11 +4,12 @@ import { MDBDataTable } from "mdbreact";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { getPropertyList } from "../../helpers/api_helper";
 import PropertyForm from "./PropertyForm";
+import { SITE_TITLE } from "../../common/common";
 
 const PROPERTY_LIST_SORT_DIR = "asc";
 
 const Property = () => {
-  document.title = "Property | Lexa - Responsive Bootstrap 5 Admin Dashboard";
+  document.title = `Property | ${SITE_TITLE}`;
   const navigate = useNavigate();
   const location = useLocation();
   const params = useParams();
@@ -74,6 +75,7 @@ const Property = () => {
           <div className="text-center my-4"><Spinner /></div>
         ) : (
           <MDBDataTable
+            responsive
             striped
             bordered
             small

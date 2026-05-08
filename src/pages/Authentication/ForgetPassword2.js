@@ -4,14 +4,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Alert, Card, CardBody, Col, Container, FormFeedback, Input, Label, Row } from 'reactstrap';
 import logoDark from "../../assets/images/logo-dark.png";
 import logoLight from "../../assets/images/logo-light.png";
-
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { post } from "../../helpers/api_helper";
+import { SITE_TITLE } from "../../common/common";
 
 
 const ForgetPassword2Page = () => {
-  document.title = "Forget Password2 | Lexa - Responsive Bootstrap 5 Admin Dashboard";
+  document.title = `Forget Password2 | ${SITE_TITLE}`;
   const navigate = useNavigate();
   const [error, setError] = React.useState("");
   const [success, setSuccess] = React.useState("");
