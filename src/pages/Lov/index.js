@@ -13,8 +13,9 @@ import {
   getLovMasterByColumn,
   saveLovDetail,
   saveLovMaster,
+  deleteLovMasterByColumn,
 } from "../../helpers/fakebackend_helper"
-import { showError, showSuccess } from "../../Pop_show/alertService"
+import { showConfirm, showError, showSuccess } from "../../Pop_show/alertService"
 import LovMasterForm from "./LovMasterForm"
 import LovDetailList from "./LovDetailList"
 import LovDetailForm from "./LovDetailForm"
@@ -82,6 +83,7 @@ const Lov = props => {
 
   const [loading, setLoading] = useState(false)
   const [saving, setSaving] = useState(false)
+  const [deletingColumn, setDeletingColumn] = useState("")
   const [error, setError] = useState("")
   const [formError, setFormError] = useState("")
   const [masterSortColumn, setMasterSortColumn] = useState(LOV_MASTER_SORT_COLUMN)
@@ -330,6 +332,20 @@ const Lov = props => {
             >
               <i className="mdi mdi-eye-outline font-size-18" />
             </Button>
+            <Button
+              color="link"
+              className="p-0 text-danger"
+              title="Delete"
+              type="button"
+              disabled={deletingColumn === (item?.lov_Column || "")}
+              onClick={() => handleDeleteMaster(item?.lov_Column || "")}
+            >
+              {deletingColumn === (item?.lov_Column || "") ? (
+                <Spinner size="sm" />
+              ) : (
+                <i className="mdi mdi-trash-can-outline font-size-18" />
+              )}
+            </Button>
           </div>
         ),
       })),
@@ -457,6 +473,32 @@ const Lov = props => {
       setFormError(errorMessage)
     } finally {
       setSaving(false)
+    }
+  }
+
+  const handleDeleteMaster = async lovColumn => {
+    const isConfirmed = await showConfirm(
+      `Are you sure you want to delete LOV column "${lovColumn}"?`,
+      "Delete",
+      "Cancel"
+    )
+    if (!isConfirmed) {
+      return
+    }
+
+    setDeletingColumn(lovColumn)
+    try {
+      const response = await deleteLovMasterByColumn(lovColumn)
+      if (response?.statusCode === 1) {
+        await showSuccess(response?.message || "LOV master deleted successfully")
+        await loadMasterList()
+      } else {
+        throw new Error(response?.message || "Failed to delete LOV master")
+      }
+    } catch (err) {
+      await showError(err?.message || err || "Failed to delete LOV master")
+    } finally {
+      setDeletingColumn("")
     }
   }
 

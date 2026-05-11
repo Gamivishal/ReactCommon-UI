@@ -339,6 +339,20 @@ const saveLovDetail = async payload => {
   }
 }
 
+const deleteLovMasterByColumn = async lovColumn => {
+  try {
+    return await del("/Lov/DeleteMaster", {
+      params: { lovColumn },
+    })
+  } catch (error) {
+    throw (
+      error?.response?.data?.message ||
+      error?.message ||
+      "LOV master delete failed"
+    )
+  }
+}
+
 const getRoleNames = async () => {
   try {
     return await get("/Dropdown/RoleName")
@@ -513,6 +527,7 @@ export {
   saveMenu,
   saveLovMaster,
   saveLovDetail,
+  deleteLovMasterByColumn,
   deleteUserById,
   deleteRoleById,
   deleteMenuById,
