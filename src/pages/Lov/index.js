@@ -557,7 +557,7 @@ const Lov = props => {
             <Spinner color="primary" />
           </div>
         ) : (
-          <MDBDataTable className="table-auto-sr" responsive striped bordered small noBottomColumns data={masterTableData} />
+          <MDBDataTable responsive striped bordered small noBottomColumns data={masterTableData} />
         )}
       </CardBody>
     </Card>

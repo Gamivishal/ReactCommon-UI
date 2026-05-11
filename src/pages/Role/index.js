@@ -339,7 +339,7 @@ const Roles = props => {
                     <Spinner color="primary" />
                   </div>
                 ) : (
-                  <MDBDataTable className="table-auto-sr" responsive striped bordered small noBottomColumns data={data} />
+                  <MDBDataTable responsive striped bordered small noBottomColumns data={data} />
                 )}
               </CardBody>
             </Card>

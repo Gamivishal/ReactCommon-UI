@@ -1,7 +1,6 @@
 import React from "react"
 
 export const SITE_TITLE = "Padhya Solutions"
-
 export const SR_AUTO_FIELD = "__sr_auto__"
 
 export const getNextSortState = (currentColumn, currentDirection, nextColumn) => {
@@ -106,18 +105,28 @@ export const buildServerSortColumns = ({
   })
 }
 
-export const withAutoSrColumn = ({ columns = [], rows = [] }) => {
+export const withAutoSrColumn = ({ columns = [], rows = [], startIndex = 0 }) => {
   const normalizedColumns = (columns || []).filter(column => column?.field !== SR_AUTO_FIELD)
-  const normalizedRows = (rows || []).map(row => ({
+  const normalizedRows = (rows || []).map((row, idx) => ({
     ...(row || {}),
-    [SR_AUTO_FIELD]: "",
+    [SR_AUTO_FIELD]: startIndex + idx + 1,
   }))
 
   return {
     columns: [
-      { label: "Sr.", field: SR_AUTO_FIELD, sort: "disabled" },
+      { label: "Sr.No", field: SR_AUTO_FIELD, sort: "disabled" },
       ...normalizedColumns,
     ],
     rows: normalizedRows,
   }
+}
+
+export const formatDate = (dateString) => {
+  if (!dateString) return ""
+  const date = new Date(dateString)
+  if (isNaN(date.getTime())) return ""
+  const day = String(date.getDate()).padStart(2, "0")
+  const month = String(date.getMonth() + 1).padStart(2, "0")
+  const year = date.getFullYear()
+  return `${day}-${month}-${year}`
 }
