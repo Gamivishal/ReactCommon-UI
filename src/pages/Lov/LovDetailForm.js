@@ -6,8 +6,8 @@ const LovDetailForm = ({ title, formData, saving, formError, onChange, onSubmit,
     <Card className="mb-4 app-form-card">
       <CardHeader className="bg-white d-flex align-items-center justify-content-between">
         <h5 className="mb-0">{title}</h5>
-        <Button color="link" className="p-0" type="button" onClick={onCancel}>
-          Close
+        <Button color="link" className="p-0 text-danger" type="button" onClick={onCancel}>
+          <i className="mdi mdi-close mdi-24px"></i>
         </Button>
       </CardHeader>
       <CardBody className="app-form-body">
