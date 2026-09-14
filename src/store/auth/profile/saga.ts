@@ -24,7 +24,7 @@ function* editProfile({ payload }) {
       );
       yield put(profileSuccess(response));
     } else if (process.env.REACT_APP_DEFAULTAUTH === "jwt") {
-      const response = yield call(postJwtProfile, "/post-jwt-profile", user);
+      const response = yield call(postJwtProfile as any, "/post-jwt-profile", user);
       yield put(profileSuccess(response));
     } else if (process.env.REACT_APP_DEFAULTAUTH === "fake") {
       const response = yield call(postFakeProfile, user);
@@ -35,7 +35,7 @@ function* editProfile({ payload }) {
   }
 }
 export function* watchProfile() {
-  yield takeEvery(EDIT_PROFILE, editProfile)
+  yield takeEvery(EDIT_PROFILE as any, editProfile)
 }
 
 function* ProfileSaga() {

@@ -80,7 +80,7 @@ function* loginUser({ payload: { user, history } }) {
 
       yield call(showSuccess, response)
 
-      const loginPayload = {
+      const loginPayload: any = {
         userName,
         email: userName,
         token: response.data,
@@ -115,8 +115,8 @@ function* logoutUser({ payload: { history } }) {
     localStorage.removeItem("menuPages");
 
     if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
-      const response = yield call(fireBaseBackend.logout);
-      yield put(logoutUserSuccess(response));
+      yield call(fireBaseBackend.logout);
+      yield put(logoutUserSuccess());
     }
     history('/login');
   } catch (error) {
@@ -146,9 +146,9 @@ function* socialLogin({ payload: { type, history } }) {
 }
 
 function* authSaga() {
-  yield takeEvery(LOGIN_USER, loginUser);
-  yield takeLatest(SOCIAL_LOGIN, socialLogin);
-  yield takeEvery(LOGOUT_USER, logoutUser);
+  yield takeEvery(LOGIN_USER as any, loginUser);
+  yield takeLatest(SOCIAL_LOGIN as any, socialLogin);
+  yield takeEvery(LOGOUT_USER as any, logoutUser);
 }
 
 export default authSaga;

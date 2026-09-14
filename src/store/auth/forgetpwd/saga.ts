@@ -26,7 +26,7 @@ function* forgetUser({ payload: { user, history } }) {
         )
       }
     } else if (process.env.REACT_APP_DEFAULTAUTH === "jwt") {
-      const response = yield call(postJwtForgetPwd, "/jwt-forget-pwd", {
+      const response = yield call(postJwtForgetPwd as any, "/jwt-forget-pwd", {
         email: user.email,
       })
       if (response) {
@@ -37,7 +37,7 @@ function* forgetUser({ payload: { user, history } }) {
         )
       }
     } else {
-      const response = yield call(postFakeForgetPwd, "/fake-forget-pwd", {
+      const response = yield call(postFakeForgetPwd as any, "/fake-forget-pwd", {
         email: user.email,
       })
       if (response) {
@@ -54,7 +54,7 @@ function* forgetUser({ payload: { user, history } }) {
 }
 
 export function* watchUserPasswordForget() {
-  yield takeEvery(FORGET_PASSWORD, forgetUser)
+  yield takeEvery(FORGET_PASSWORD as any, forgetUser)
 }
 
 function* forgetPasswordSaga() {

@@ -42,7 +42,7 @@ export const changeSidebarTheme = theme => ({
   payload: theme,
 })
 
-export const changeSidebarType = (sidebarType, isMobile) => {
+export const changeSidebarType = (sidebarType: string, isMobile?: boolean) => {
   return {
     type: CHANGE_SIDEBAR_TYPE,
     payload: { sidebarType, isMobile },

@@ -177,35 +177,35 @@ function* showRightSidebar() {
  * Watchers
  */
 export function* watchChangeLayoutType() {
-  yield takeEvery(CHANGE_LAYOUT, changeLayout)
+  yield takeEvery(CHANGE_LAYOUT as any, changeLayout)
 }
 
 export function* watchChangeLayoutWidth() {
-  yield takeEvery(CHANGE_LAYOUT_WIDTH, changeLayoutWidth)
+  yield takeEvery(CHANGE_LAYOUT_WIDTH as any, changeLayoutWidth)
 }
 
 export function* watchChangeColorType() {
-  yield takeEvery(CHANGE_COLOR, changeColor)
+  yield takeEvery(CHANGE_COLOR as any, changeColor)
 }
 
 export function* watchChangeModeType() {
-  yield takeEvery(CHANGE_MODE, changeModeTheme)
+  yield takeEvery(CHANGE_MODE as any, changeModeTheme)
 }
 
 export function* watchChangeLeftSidebarTheme() {
-  yield takeEvery(CHANGE_SIDEBAR_THEME, changeLeftSidebarTheme)
+  yield takeEvery(CHANGE_SIDEBAR_THEME as any, changeLeftSidebarTheme)
 }
 
 export function* watchChangeLeftSidebarType() {
-  yield takeEvery(CHANGE_SIDEBAR_TYPE, changeLeftSidebarType)
+  yield takeEvery(CHANGE_SIDEBAR_TYPE as any, changeLeftSidebarType)
 }
 
 export function* watchChangeTopbarTheme() {
-  yield takeEvery(CHANGE_TOPBAR_THEME, changeTopbarTheme)
+  yield takeEvery(CHANGE_TOPBAR_THEME as any, changeTopbarTheme)
 }
 
 export function* watchShowRightSidebar() {
-  yield takeEvery(SHOW_RIGHT_SIDEBAR, showRightSidebar)
+  yield takeEvery(SHOW_RIGHT_SIDEBAR as any, showRightSidebar)
 }
 
 function* LayoutSaga() {

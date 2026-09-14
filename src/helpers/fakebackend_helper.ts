@@ -4,22 +4,21 @@ import { del, get, post } from "./api_helper";
 import * as url from "./url_helper";
 import { exportToExcel } from "./api_helper";
 
+const errorMessage = (error: any, fallback: string): string =>
+  error?.response?.data?.message || error?.message || fallback;
+
 // Reset Password API
-const resetPassword = async (username) => {
+const resetPassword = async (username: string) => {
   try {
     return await post("/User/ResetPassword", null, {
       params: { username },
     });
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "Reset password failed"
-    );
+    throw errorMessage(error, "Reset password failed");
   }
 };
 
-const buildPageParams = (overrides = {}) => {
+const buildPageParams = (overrides: Record<string, any> = {}) => {
   return {
     start: 0,
     length: 10,
@@ -80,11 +79,7 @@ const postFakeLogin = async data => {
 
     return response
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "Login API call failed"
-    )
+    throw errorMessage(error, "Login API call failed")
   }
 };
 
@@ -104,11 +99,7 @@ const getMenusPages = async (params = {}) => {
       params: buildPageParams(params),
     })
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "Menus API call failed"
-    )
+    throw errorMessage(error, "Menus API call failed")
   }
 };
 
@@ -118,11 +109,7 @@ const getUsersPages = async (params = {}) => {
       params: buildPageParams(params),
     })
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "Users API call failed"
-    )
+    throw errorMessage(error, "Users API call failed")
   }
 };
 
@@ -132,11 +119,7 @@ const getRolesPages = async (params = {}) => {
       params: buildPageParams(params),
     })
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "Roles API call failed"
-    )
+    throw errorMessage(error, "Roles API call failed")
   }
 };
 
@@ -146,11 +129,7 @@ const getUserById = async id => {
       params: { id },
     })
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "User fetch by id failed"
-    )
+    throw errorMessage(error, "User fetch by id failed")
   }
 }
 
@@ -160,11 +139,7 @@ const getRoleById = async id => {
       params: { id },
     })
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "Role fetch by id failed"
-    )
+    throw errorMessage(error, "Role fetch by id failed")
   }
 }
 
@@ -174,11 +149,7 @@ const getMenuById = async id => {
       params: { id },
     })
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "Menu fetch by id failed"
-    )
+    throw errorMessage(error, "Menu fetch by id failed")
   }
 }
 
@@ -191,11 +162,7 @@ const getLovColumns = async (params = {}) => {
       },
     })
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "LOV columns API call failed"
-    )
+    throw errorMessage(error, "LOV columns API call failed")
   }
 }
 
@@ -208,11 +175,7 @@ const getLovMasterByColumn = async lovColumn => {
       },
     })
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "LOV master fetch failed"
-    )
+    throw errorMessage(error, "LOV master fetch failed")
   }
 }
 
@@ -226,11 +189,7 @@ const getLovDetailsByColumn = async (lovColumn, params = {}) => {
       },
     })
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "LOV detail list API call failed"
-    )
+    throw errorMessage(error, "LOV detail list API call failed")
   }
 }
 
@@ -244,11 +203,7 @@ const getLovDetailByCode = async (lovColumn, lovCode) => {
       },
     })
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "LOV detail fetch failed"
-    )
+    throw errorMessage(error, "LOV detail fetch failed")
   }
 }
 
@@ -256,11 +211,7 @@ const saveUser = async payload => {
   try {
     return await post("/User/Add", payload)
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "User save failed"
-    )
+    throw errorMessage(error, "User save failed")
   }
 }
 
@@ -268,11 +219,7 @@ const saveRole = async payload => {
   try {
     return await post("/Role/Save", payload)
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "Role save failed"
-    )
+    throw errorMessage(error, "Role save failed")
   }
 }
 
@@ -280,11 +227,7 @@ const saveMenu = async payload => {
   try {
     return await post("/Menu/Add", payload)
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "Menu save failed"
-    )
+    throw errorMessage(error, "Menu save failed")
   }
 }
 
@@ -292,11 +235,7 @@ const saveLovMaster = async payload => {
   try {
     return await post("/Lov/SaveMaster", payload)
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "LOV master save failed"
-    )
+    throw errorMessage(error, "LOV master save failed")
   }
 }
 
@@ -304,11 +243,7 @@ const saveLovDetail = async payload => {
   try {
     return await post("/Lov/SaveDetail", payload)
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "LOV detail save failed"
-    )
+    throw errorMessage(error, "LOV detail save failed")
   }
 }
 
@@ -318,11 +253,7 @@ const deleteLovMasterByColumn = async lovColumn => {
       params: { lovColumn },
     })
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "LOV master delete failed"
-    )
+    throw errorMessage(error, "LOV master delete failed")
   }
 }
 
@@ -330,11 +261,7 @@ const getRoleNames = async () => {
   try {
     return await get("/Dropdown/RoleName")
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "Role dropdown API call failed"
-    )
+    throw errorMessage(error, "Role dropdown API call failed")
   }
 }
 
@@ -347,11 +274,7 @@ const getRoleMenuPages = async () => {
       }),
     })
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "Role menu API call failed"
-    )
+    throw errorMessage(error, "Role menu API call failed")
   }
 }
 
@@ -359,11 +282,7 @@ const getMenuAccessPages = async () => {
   try {
     return await get("/MenuAccess/GetMenuAccess")
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "Menu access API call failed"
-    )
+    throw errorMessage(error, "Menu access API call failed")
   }
 }
 
@@ -373,11 +292,7 @@ const deleteUserById = async id => {
       params: { id },
     })
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "User delete failed"
-    )
+    throw errorMessage(error, "User delete failed")
   }
 }
 
@@ -387,11 +302,7 @@ const deleteRoleById = async id => {
       params: { id },
     })
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "Role delete failed"
-    )
+    throw errorMessage(error, "Role delete failed")
   }
 }
 
@@ -399,11 +310,7 @@ const deleteMenuById = async id => {
   try {
     return await del(`https://localhost:7281/api/Menu/Delete?id=${id}`)
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "Menu delete failed"
-    )
+    throw errorMessage(error, "Menu delete failed")
   }
 }
 
@@ -411,11 +318,7 @@ const changePassword = async payload => {
   try {
     return await post("/ChangePassword/Add", payload)
   } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "Change password failed"
-    )
+    throw errorMessage(error, "Change password failed")
   }
 }
 

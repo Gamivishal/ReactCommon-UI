@@ -1,3 +1,4 @@
+import { AnyAction } from "redux"
 import {
   LOGIN_USER,
   LOGIN_SUCCESS,
@@ -6,12 +7,18 @@ import {
   API_ERROR,
 } from "./actionTypes"
 
-const initialState = {
+interface LoginState {
+  error: string
+  loading: boolean
+  isUserLogout?: boolean
+}
+
+const initialState: LoginState = {
   error: "",
   loading: false,
 }
 
-const login = (state = initialState, action) => {
+const login = (state: LoginState = initialState, action: AnyAction): LoginState => {
   switch (action.type) {
     case LOGIN_USER:
       state = {

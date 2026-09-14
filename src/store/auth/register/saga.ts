@@ -37,7 +37,7 @@ function* registerUser({ payload: { user } }) {
 }
 
 export function* watchUserRegister() {
-  yield takeEvery(REGISTER_USER, registerUser)
+  yield takeEvery(REGISTER_USER as any, registerUser)
 }
 
 function* accountSaga() {

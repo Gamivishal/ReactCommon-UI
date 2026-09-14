@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 // Download a file (e.g., Excel) from the backend and trigger browser download
-export async function exportToExcel(url, filename = "data.xlsx", config = {}) {
+export async function exportToExcel(url: string, filename = "data.xlsx", config: AxiosRequestConfig = {}) {
   const response = await axiosApi.get(url, {
     ...config,
     responseType: "blob",
@@ -24,7 +24,7 @@ const axiosApi = axios.create({
   baseURL: API_URL,
 });
 
-let lastApiResponseData = null;
+let lastApiResponseData: unknown = null;
 
 axiosApi.interceptors.request.use(
   config => {
@@ -34,7 +34,7 @@ axiosApi.interceptors.request.use(
 
     config.headers = {
       ...(config.headers || {}),
-    };
+    } as any;
 
     // Only attach auth header when a token exists.
     if (token) {
@@ -68,25 +68,25 @@ export const consumeLastApiResponseData = () => {
   return recentResponseData;
 };
 
-export async function get(url, config = {}) {
+export async function get<T = any>(url: string, config: AxiosRequestConfig = {}): Promise<T> {
   return await axiosApi
     .get(url, { ...config })
     .then((response) => response.data);
 }
 
-export async function post(url, data, config = {}) {
+export async function post<T = any>(url: string, data?: any, config: AxiosRequestConfig = {}): Promise<T> {
   return axiosApi
     .post(url, { ...data }, { ...config })
     .then((response) => response.data);
 }
 
-export async function put(url, data, config = {}) {
+export async function put<T = any>(url: string, data?: any, config: AxiosRequestConfig = {}): Promise<T> {
   return axiosApi
     .put(url, { ...data }, { ...config })
     .then((response) => response.data);
 }
 
-export async function del(url, config = {}) {
+export async function del<T = any>(url: string, config: AxiosRequestConfig = {}): Promise<T> {
   return await axiosApi
     .delete(url, { ...config })
     .then((response) => response.data);
