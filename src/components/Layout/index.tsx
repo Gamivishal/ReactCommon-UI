@@ -19,11 +19,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from 'reselect';
 
 // Layout Related Components
-import Header from "./Header"
+import HeaderComponent from "./Header"
 import Sidebar from "./Sidebar"
 import Footer from "./Footer"
 //Import Breadcrumb
 import Breadcrumb from "../../components/Common/Breadcrumb"
+
+// connect()'s generic inference can't extend ownProps (like toggleMenuCallback)
+// onto an implicitly-typed component -- cast to keep the existing runtime behavior.
+const Header: any = HeaderComponent
 
 const Layout = (props) => {
 

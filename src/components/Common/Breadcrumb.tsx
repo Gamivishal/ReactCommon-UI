@@ -3,7 +3,17 @@ import { Row, Col } from "reactstrap"
 import { connect } from 'react-redux';
 import {Link} from "react-router-dom"
 
-const Breadcrumb = props => {
+interface BreadcrumbItem {
+  title: string
+  link?: string
+}
+
+interface BreadcrumbProps {
+  title?: string
+  breadcrumbItems?: BreadcrumbItem[]
+}
+
+const Breadcrumb = (props: BreadcrumbProps) => {
 
 const itemLength = (props.breadcrumbItems || []).length || 1;
 

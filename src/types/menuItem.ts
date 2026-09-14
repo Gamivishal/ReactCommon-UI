@@ -8,6 +8,7 @@ export interface MenuItem {
   isActive?: boolean
   isDeleted?: boolean
   displayOrder?: number
+  children?: MenuItem[]
   [key: string]: unknown
 }
 

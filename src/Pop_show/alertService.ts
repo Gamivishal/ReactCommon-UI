@@ -129,9 +129,9 @@ const buildPopup = ({
     });
 };
 
-export const showSuccess = (messageOrResponse = "Success!") => {
+export const showSuccess = (messageOrResponse: any = "Success!") => {
     const isResponseObject = typeof messageOrResponse === "object" && messageOrResponse !== null;
-    const responseData = isResponseObject ? messageOrResponse : consumeLastApiResponseData();
+    const responseData: any = isResponseObject ? messageOrResponse : consumeLastApiResponseData();
 
     if (responseData?.isConfirm === false) {
         return Promise.resolve({ isConfirmed: true, value: true });
@@ -171,7 +171,7 @@ export const showConfirm = async (
     confirmButtonText = "OK",
     cancelButtonText = "Cancel",
 ) => {
-    const result = await buildPopup({
+    const result: any = await buildPopup({
         type: "confirm",
         title: "Please Confirm",
         message,

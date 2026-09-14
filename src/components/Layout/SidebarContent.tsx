@@ -6,13 +6,14 @@ import SimpleBar from "simplebar-react"
 
 // MetisMenu
 import MetisMenu from "metismenujs"
-import withRouter from "components/Common/withRouter"
+import withRouter, { WithRouterProps } from "components/Common/withRouter"
 import { Link, useLocation } from "react-router-dom"
+import { parseMenuPages } from "types/menuItem"
 
-const SidebarContent = props => {
+const SidebarContent = (props: WithRouterProps) => {
   const location = useLocation()
-  const ref = useRef();
-  const activateParentDropdown = useCallback((item) => {
+  const ref = useRef<any>();
+  const activateParentDropdown = useCallback((item: any) => {
     item.classList.add("active");
     const parent = item.parentElement;
     const parent2El = parent.childNodes[1];
@@ -140,8 +141,7 @@ const SidebarContent = props => {
 
   const dynamicMenu = useMemo(() => {
     try {
-      const menuRaw = localStorage.getItem("menuPages")
-      const menuList = menuRaw ? JSON.parse(menuRaw) : []
+      const menuList = parseMenuPages()
       if (!Array.isArray(menuList) || !menuList.length) {
         return []
       }
