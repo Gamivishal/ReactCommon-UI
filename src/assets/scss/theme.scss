@@ -40,14 +40,6 @@
 .dataTables_paginate {
   float: right;
 }
-.rdw-editor-main {
-  border: 1px solid $gray-300;
-  height: 239px;
-}
-.dz-message {
-  text-align: center;
-  padding: 30px;
-}
 // kanban board
 .react-kanban-column {
   height: 100%;
@@ -60,19 +52,11 @@
   vertical-align: top;
 }
 
-.fcYNFc,
-.sc-AxmLO.gmtmqV {
-  background-color: $card-bg !important;
-  margin: 0 20px 0 0 !important;
-}
 .task-box {
   border: 1px solid $border-color;
 }
 .react-datepicker-wrapper {
   width: 100% !important;
-}
-.ReactModal__Overlay {
-  z-index: 1002 !important;
 }
 .chat-conversation .right .conversation-list {
   margin-right: 15px;
@@ -85,21 +69,11 @@
 a:hover {
   cursor: pointer;
 }
-.rating-container {
-  background-color: transparent !important;
-}
 .input-group-append {
   z-index: 0;
 }
 .input-color {
   color: $input-color !important;
-}
-.sketch-picker {
-  position: absolute;
-  z-index: 1;
-}
-.rangeslider__fill {
-  background-color: $primary !important;
 }
 
 .flatpickr-months .flatpickr-month {
@@ -133,67 +107,6 @@ span.flatpickr-weekday {
   width: auto !important;
 }
 
-//Authenication carousel
-.slider_css {
-  .slide {
-    background: none !important;
-  }
-
-  // .control-dots {
-  //   margin-top: 35px !important;
-  // }
-
-  .carousel-status,
-  .control-next,
-  .control-prev {
-    display: none !important;
-  }
-}
-.carousel {
-  .control-dots {
-    margin: -5px 0px;
-  }
-  .dot {
-    background: #556ee6 !important;
-    width: 9px !important;
-    height: 9px !important;
-  }
-}
-//caldendar
-.fc-direction-ltr .fc-daygrid-event.fc-event-end,
-.fc-direction-rtl .fc-daygrid-event.fc-event-start {
-  padding: 5px !important;
-  font-size: 12px !important;
-  margin-right: 2px;
-}
-@include media-breakpoint-down(sm) {
-  .fc-toolbar {
-    display: block !important;
-    text-align: center;
-    .fc-left,
-    .fc-right,
-    .fc-center {
-      float: none;
-      display: block;
-      clear: both;
-      margin: 10px 0;
-    }
-  }
-  .fc {
-    .fc-toolbar {
-      > * {
-        > * {
-          float: none;
-        }
-      }
-    }
-  }
-  .fc-today-button {
-    display: none;
-  }
-}
-
-// calendar modal
 .close {
   background: transparent;
   border: 0;
@@ -274,19 +187,6 @@ span.flatpickr-weekday {
   transform: translate3d(5px, 5px, 0px) !important;
 }
 
-//form editor
-.rdw-editor-toolbar,
-.rdw-editor-main {
-  border: 1px solid #ccc !important;
-}
-
-//Calendar
-.app-calendar .btn {
-  text-transform: capitalize;
-}
-.dropzone:focus {
-  outline: none !important ;
-}
 //dropdown
 .dropdown-menu.dropdown-menu-right {
   right: 0 !important;

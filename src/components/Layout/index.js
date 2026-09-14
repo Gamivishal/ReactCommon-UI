@@ -22,7 +22,6 @@ import { createSelector } from 'reselect';
 import Header from "./Header"
 import Sidebar from "./Sidebar"
 import Footer from "./Footer"
-import Rightbar from "../CommonForBoth/Rightbar"
 //Import Breadcrumb
 import Breadcrumb from "../../components/Common/Breadcrumb"
 
@@ -43,12 +42,7 @@ const Layout = (props) => {
     }));
 
   const {
-    leftSideBarTheme,
-    layoutWidth,
-    leftSideBarType,
-    topbarTheme,
-    layoutColor,
-    layoutMode
+    leftSideBarType
   } = useSelector(selectLayoutProperties);
 
   useEffect(() => {
@@ -81,42 +75,10 @@ const Layout = (props) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (leftSideBarTheme) {
-      dispatch(changeSidebarTheme(leftSideBarTheme));
-    }
-  }, [leftSideBarTheme, dispatch]);
-
-  useEffect(() => {
-    if (layoutWidth) {
-      dispatch(changeLayoutWidth(layoutWidth));
-    }
-  }, [layoutWidth, dispatch]);
-
-  useEffect(() => {
-    if (layoutMode) {
-      dispatch(changeMode(layoutMode));
-    }
-  }, [layoutMode, dispatch]);
-
-  useEffect(() => {
     if (leftSideBarType) {
       dispatch(changeSidebarType(leftSideBarType));
     }
   }, [leftSideBarType, dispatch]);
-
-  useEffect(() => {
-    if (topbarTheme) {
-      dispatch(changeTopbarTheme(topbarTheme));
-    }
-  }, [topbarTheme, dispatch]);
-
-  useEffect(() => {
-    if (layoutColor) {
-      dispatch(changeColor(layoutColor));
-    }
-  }, [layoutColor, dispatch]);
-
-
   
 
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -157,14 +119,11 @@ const Layout = (props) => {
             <Container fluid>
               <Breadcrumb />
               {props.children}
-              {/* render Footer */}
-              <Footer />
             </Container>
           </div>
         </div>
         <Footer />
       </div>
-      {props.showRightSidebar ? <Rightbar /> : null}
     </React.Fragment>
   )
 }

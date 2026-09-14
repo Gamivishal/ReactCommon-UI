@@ -5,21 +5,12 @@ import { connect } from "react-redux"
 
 import { Link } from "react-router-dom"
 
-// Reactstrap
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap"
-
-// Import menuDropdown
-import LanguageDropdown from "../CommonForBoth/TopbarDropdown/LanguageDropdown"
-import NotificationDropdown from "../CommonForBoth/TopbarDropdown/NotificationDropdown"
-import ProfileMenu from "../CommonForBoth/TopbarDropdown/ProfileMenu"
+import ProfileMenu from "./ProfileMenu"
 
 // import megamenuImg from "../../assets/images/megamenu-img.png"
 import logo from "../../assets/images/logo-sm.png"
 import logoLightPng from "../../assets/images/logo-light.png"
 import logoDark from "../../assets/images/logo-dark.png"
-
-//i18n
-import { withTranslation } from "react-i18next"
 
 // Redux Store
 import {
@@ -30,36 +21,8 @@ import {
 
 const Header = props => {
   const [search, setsearch] = useState(false)
-  const [createmenu, setCreateMenu] = useState(false)
 
   // const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-
-  function toggleFullscreen() {
-    if (
-      !document.fullscreenElement &&
-      /* alternative standard method */ !document.mozFullScreenElement &&
-      !document.webkitFullscreenElement
-    ) {
-      // current working methods
-      if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen()
-      } else if (document.documentElement.mozRequestFullScreen) {
-        document.documentElement.mozRequestFullScreen()
-      } else if (document.documentElement.webkitRequestFullscreen) {
-        document.documentElement.webkitRequestFullscreen(
-          Element.ALLOW_KEYBOARD_INPUT
-        )
-      }
-    } else {
-      if (document.cancelFullScreen) {
-        document.cancelFullScreen()
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen()
-      } else if (document.webkitCancelFullScreen) {
-        document.webkitCancelFullScreen()
-      }
-    }
-  }
 
   function tToggle() {
     var body = document.body;
@@ -101,33 +64,6 @@ const Header = props => {
             >
               <i className="mdi mdi-menu"></i>
             </button>
-            <div className="d-none d-sm-block">
-              <Dropdown
-                isOpen={createmenu}
-                toggle={() => setCreateMenu(!createmenu)}
-                className="d-inline-block"
-              >
-
-                {/* <div className="dropdown dropdown-topbar pt-3 mt-1 d-inline-block">
-
-                  <DropdownToggle
-                    className="btn btn-light"
-                    tag="button"
-                  >
-                    Create <i className="mdi mdi-chevron-down"></i>
-                  </DropdownToggle>
-
-                  <DropdownMenu className="dropdown-menu-end">
-                    <DropdownItem tag="a" href="#">Action</DropdownItem>
-                    <DropdownItem tag="a" href="#">Another action</DropdownItem>
-                    <DropdownItem tag="a" href="#">Something else here</DropdownItem>
-                    <div className="dropdown-divider"></div>
-                    <DropdownItem tag="a" href="#">Separated link</DropdownItem>
-                  </DropdownMenu>
-
-                </div> */}
-              </Dropdown>
-            </div>
           </div>
           <div className="d-flex">
             {/* <form className="app-search d-none d-lg-block">
@@ -178,34 +114,8 @@ const Header = props => {
                 </form>
               </div>
             </div>
-            {/* <LanguageDropdown /> */}
-            <div className="dropdown d-none d-lg-inline-block">
-              <button
-                type="button"
-                onClick={() => {
-                  toggleFullscreen()
-                }}
-                className="btn header-item noti-icon waves-effect"
-                data-toggle="fullscreen"
-              >
-                <i className="mdi mdi-fullscreen font-size-24"></i>
-              </button>
-            </div>
-            {/* <NotificationDropdown /> */}
             <ProfileMenu />
-            <div
-              onClick={() => {
-                props.showRightSidebarAction(!props.showRightSidebar)
-              }}
-              className="dropdown d-inline-block"
-            >
-              <button
-                type="button"
-                className="btn header-item noti-icon right-bar-toggle waves-effect"
-              >
-                <i className="mdi mdi-spin mdi-cog"></i>
-              </button>
-            </div>
+
           </div>
         </div>
       </header>
@@ -219,7 +129,6 @@ Header.propTypes = {
   leftSideBarType: PropTypes.any,
   showRightSidebar: PropTypes.any,
   showRightSidebarAction: PropTypes.func,
-  t: PropTypes.any,
   toggleLeftmenu: PropTypes.func
 }
 
@@ -237,4 +146,4 @@ export default connect(mapStatetoProps, {
   showRightSidebarAction,
   toggleLeftmenu,
   changeSidebarType,
-})(withTranslation()(Header))
+})(Header)

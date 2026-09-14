@@ -18,7 +18,6 @@ import ResetPasswordPage from "../pages/Authentication/ResetPasswordPage"
 import Login1 from "../pages/AuthenticationInner/Login"
 import Register1 from "../pages/AuthenticationInner/Register"
 import Recoverpw from "../pages/AuthenticationInner/Recoverpw"
-import LockScreen from "../pages/AuthenticationInner/auth-lock-screen"
 
 // Dashboard
 import Dashboard from "../pages/Dashboard/index"
@@ -90,7 +89,6 @@ const authRoutes = [
   { path: "/pages-login", component: <Login1 /> },
   { path: "/pages-register", component: <Register1 /> },
   { path: "/page-recoverpw", component: <Recoverpw /> },
-  { path: "/auth-lock-screen", component: <LockScreen /> },
 ]
 
 export { userRoutes, authRoutes }

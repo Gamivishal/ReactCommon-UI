@@ -17,25 +17,6 @@ export async function exportToExcel(url, filename = "data.xlsx", config = {}) {
   link.remove();
 }
 
-export async function exportToFile(url, filename, config = {}) {
-  const response = await axiosApi.get(url, {
-    ...config,
-    responseType: "blob",
-  });
-
-  const urlObj = window.URL.createObjectURL(response.data);
-
-  const link = document.createElement("a");
-  link.href = urlObj;
-  link.setAttribute("download", filename);
-
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-
-  window.URL.revokeObjectURL(urlObj);
-}
-
 //apply base url for axios
 const API_URL = "https://localhost:7281/api";
 
@@ -109,10 +90,4 @@ export async function del(url, config = {}) {
   return await axiosApi
     .delete(url, { ...config })
     .then((response) => response.data);
-}
-export async function getBlob(url, config = {}) {
-  return await axiosApi.get(url, {
-    ...config,
-    responseType: "blob",
-  });
 }

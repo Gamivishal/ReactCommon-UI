@@ -2,7 +2,7 @@
 import axios from "axios";
 import { del, get, post } from "./api_helper";
 import * as url from "./url_helper";
-import { getBlob, exportToExcel } from "./api_helper";
+import { exportToExcel } from "./api_helper";
 
 // Reset Password API
 const resetPassword = async (username) => {
@@ -17,18 +17,6 @@ const resetPassword = async (username) => {
       "Reset password failed"
     );
   }
-};
-
-// Gets the logged in user data from local session
-const getLoggedInUser = () => {
-  const user = localStorage.getItem("user");
-  if (user) return JSON.parse(user);
-  return null;
-};
-
-//is user is logged in
-const isUserAuthenticated = () => {
-  return getLoggedInUser() !== null;
 };
 
 const buildPageParams = (overrides = {}) => {
@@ -108,21 +96,6 @@ export const exportUsers = async (params = {}) => {
 // Export users to PDF
 export const exportUsersPdf = async (params = {}) => {
   return await exportToExcel("/User/ExportToPdf", "Users.pdf", { params });
-};
-
-// using into ROle For Get value into Dropdown
-const getMenuPages = async () => {
-  try {
-    return await get("/Menu/GetAllpage", {
-      params: buildPageParams({ length: 100 }),
-    })
-  } catch (error) {
-    throw (
-      error?.response?.data?.message ||
-      error?.message ||
-      "Menu API call failed"
-    )
-  }
 };
 
 const getMenusPages = async (params = {}) => {
@@ -491,15 +464,9 @@ const postJwtLogin = data => post(url.POST_FAKE_JWT_LOGIN, data);
 // postForgetPwd
 const postJwtForgetPwd = data => post(url.POST_FAKE_JWT_PASSWORD_FORGET, data);
 
-// postSocialLogin
-export const postSocialLogin = data => post(url.SOCIAL_LOGIN, data);
-
-
 // export const getUserProfile = () => get(url.GET_USER_PROFILE)
 
 export {
-  getLoggedInUser,
-  isUserAuthenticated,
   postFakeRegister,
   postFakeLogin,
   postFakeProfile,
@@ -508,7 +475,6 @@ export {
   postJwtLogin,
   postJwtForgetPwd,
   postJwtProfile,
-  getMenuPages,
   getMenusPages,
   getUsersPages,
   getRolesPages,

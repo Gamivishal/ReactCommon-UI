@@ -11,8 +11,7 @@ import { userRoutes, authRoutes } from "./routes/allRoutes"
 import Authmiddleware from "./routes/middleware/Authmiddleware"
 
 // layouts Format
-import VerticalLayout from "./components/VerticalLayout/"
-import HorizontalLayout from "./components/HorizontalLayout/"
+import Layout from "./components/Layout/"
 import NonAuthLayout from "./components/NonAuthLayout"
 
 // Import scss
@@ -47,20 +46,7 @@ const App = props => {
 //     document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");
 //   }, [])
 
-  function getLayout() {
-    let layoutCls = VerticalLayout
-    switch (props.layout.layoutType) {
-      case "horizontal":
-        layoutCls = HorizontalLayout
-        break
-      default:
-        layoutCls = VerticalLayout
-        break
-    }
-    return layoutCls
-  }
 
-  const Layout = getLayout()
   return (
     <React.Fragment>
       <Routes>
