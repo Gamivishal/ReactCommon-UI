@@ -74,7 +74,7 @@ const Users = props => {
 // new for export
 const handleExport = async () => {
   try {
-    const response = await exportUsers({
+    const response: any = await exportUsers({
       start: 0,
       length: 1000,
       sortColumn,
@@ -100,7 +100,7 @@ const handleExport = async () => {
 // pdf
 const handleExportPdf = async () => {
   try {
-    const response = await exportUsersPdf({
+    const response: any = await exportUsersPdf({
       start: 0,
       length: 1000,
       sortColumn,
@@ -312,7 +312,7 @@ const handleExportPdf = async () => {
     setSaving(true)
 
     try {
-      const payload = {
+      const payload: any = {
         id: isEditMode ? Number(formData.id) || userId : 0,
         userName: formData.userName,
         isDeleted: Boolean(formData.isDeleted),
