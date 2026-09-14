@@ -1,10 +1,10 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 
-const Authmiddleware = (props) => {
+const Authmiddleware = (props: any) => {
   if (!localStorage.getItem("authUser")) {
     return (
-      <Navigate to={{ pathname: "/login", state: { from: props.location } }} />
+      <Navigate to={{ pathname: "/login", state: { from: props.location } } as any} />
     );
   }
   return (<React.Fragment>

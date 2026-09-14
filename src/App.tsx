@@ -11,7 +11,7 @@ import { userRoutes, authRoutes } from "./routes/allRoutes"
 import Authmiddleware from "./routes/middleware/Authmiddleware"
 
 // layouts Format
-import Layout from "./components/Layout/"
+import LayoutComponent from "./components/Layout/"
 import NonAuthLayout from "./components/NonAuthLayout"
 
 // Import scss
@@ -21,6 +21,10 @@ import "./assets/scss/theme.scss"
 // import { initFirebaseBackend } from "./helpers/firebase_helper"
 
 import fakeBackend from "./helpers/AuthType/fakeBackend"
+
+// connect()'s generic inference can't extend `children` onto an
+// implicitly-typed component -- cast to keep the existing runtime behavior.
+const Layout: any = LayoutComponent
 
 // Activating fake backend
 fakeBackend()
