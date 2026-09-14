@@ -21,7 +21,7 @@ export const profileError = error => {
   }
 }
 
-export const resetProfileFlag = error => {
+export const resetProfileFlag = (error?: any) => {
   return {
     type: RESET_PROFILE_FLAG,
   }

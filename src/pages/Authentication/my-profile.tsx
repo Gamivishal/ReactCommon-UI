@@ -48,7 +48,7 @@ const MyProfile = () => {
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [profileLoadError, setProfileLoadError] = useState("");
+  const [profileLoadError, setProfileLoadError] = useState<any>("");
   const [passwordError, setPasswordError] = useState("");
   const [passwordSuccess, setPasswordSuccess] = useState("");
 
